@@ -1,0 +1,31 @@
+{% extends  'base_survey.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<hr>
+<h3 class="text-center">Опрос</h3>
+<hr>
+<form method='POST'>
+	{% csrf_token %}
+{%for survey in survey_list%}
+<b>{{survey.0}}:</b> 
+	{%if survey.1%}
+	{%for i in survey.1%}
+	<div class="form-check">
+		<input id="{{i.id}}" name="{{survey.0.id}}" type="radio" value="{{i}}"  class="form-check-input">
+		<label class="form-check-label" for="{{i.id}}">
+			{{i}}
+		</label> <br>
+	</div>
+	{%endfor%}
+	<br>
+	{%else%}
+	<textarea name="{{survey.0.id}}" class="form-control"></textarea> <br>
+	{%endif%}
+{%endfor%}
+<hr>
+<div class="text-center">
+<button type='submit' class="btn btn-primary">Отправить</button>
+</div>
+</form>
+{% endblock %} 

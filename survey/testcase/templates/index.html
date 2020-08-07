@@ -1,0 +1,32 @@
+<!doctype  html>
+<html  lang="en">
+<head>
+<link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+<title>Главная страница</title>
+</head>
+<body>
+  <div  class="container">
+  	<hr>
+  	<h2 class="text-center">Личный кабинет</h2>
+  	<hr>
+  	<div class="row">
+  		<div class="col-6">Вы вошли как: <b>{{user}}</b> <br> <a href="/logout/">Выйти</a></div>
+  		<div  class="col-6 text-right">
+  			{%for survey in surveys%}
+      		<button type="button" class="btn btn-warning" onclick="location.href='/survey/{{survey.id}}'"><b>Пройти опрос:</b> {{survey}}</button>
+      		{%endfor%}
+      	</div>
+  	</div>
+  	<hr>
+    <div  class="row justify-content-center">
+      <div  class="col">
+      		<h4>Пройденые опросы:</h4>
+      		{%for survey in surveys_done%}
+      		<div><a href="/survey_done/{{survey.id}}">{{survey}}</a></div>
+      		{%endfor%}
+      </div>
+    </div>
+    <hr>
+  </div>
+</body>
+</html>

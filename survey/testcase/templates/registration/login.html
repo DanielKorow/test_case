@@ -1,0 +1,23 @@
+{% extends  'base_auth.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<h1  class="text-center">Авторизация</h1>
+<div class="card">
+<div class="card-body">
+<div class="card-title text-center">Введите учётные данные</div>
+
+<form method="post">
+{% csrf_token %}
+
+{{ login_form|crispy }}
+
+<button type="submit" class="btn btn-default btn-block">Войти</button>
+</form>
+{{error}}
+</div>
+</div>
+<div class="text-center">
+      	<a href="/registration">Регистрация</a>
+      </div>
+{% endblock %}

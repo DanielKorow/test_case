@@ -1,0 +1,12 @@
+{% extends  'base_survey.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<hr>
+<h3 class="text-center">Опрос</h3>
+<hr>
+{%for answer in answers%}
+<b>{{answer.question}}:</b> <br>
+<li>{{answer.answer}}</li> <br>
+{%endfor%}
+{% endblock %}
